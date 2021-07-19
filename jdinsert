@@ -16,7 +16,7 @@ public class connection {
 }
 
 import java.sql.*;
-public class GFG {
+public class Insert {
 	public static void main(String[] args)
 	{
 		Connection con = null;
