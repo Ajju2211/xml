@@ -1,40 +1,44 @@
 ##############################Srikar#########################################
 One day Kiran goes to Harsha's house. Kiran likes to engage himself in logical thinking to solve problems and Harsha knows it. So, Harsha gives him a set of integers A, and an integer K and asks to find the number of Harsha's elements in the set.
-C lang
-#include<bits/stdc++.h>
+## C lang
+#include <bits/stdc++.h>
 using namespace std;
 int main()
-        	{
-        	int n,k;
-        	cin>>n>>k;
-        	map<int,int> m;
-        	int elementlst[n];
-        	for(int i=0;i<n;i++){
-        	    cin>>elementlst[i];
-                    	m[elementlst[i]]++;
-	}
-        	int h = 0;
-        	auto j = m.begin();
-	auto it = m.begin();
-        	it++;
-	if (it==m.end())      	return 0;
-	if (j->first+k>=it->first)
-                    	    h+= j->second;
-                    	
-        	it++;
-	j++;
-	auto i = m.begin();
-	while(it!=m.end())
-	{
-	     	if (i->first+k>=j->first||j->first+k>=it->first) h += j->second;
-  	   	i++;
-    	j++;
-    	it++;
-	}
-        	if (i->first+k>=j->first)   h += j->second;
-                    	cout << h;
-        	return 0;
-        	}
+{
+    int n, k;
+    cin >> n >> k;
+    map<int, int> m;
+    int elementlst[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> elementlst[i];
+        m[elementlst[i]]++;
+    }
+    int h = 0;
+    auto j = m.begin();
+    auto it = m.begin();
+    it++;
+    if (it == m.end())
+        return 0;
+    if (j->first + k >= it->first)
+        h += j->second;
+
+    it++;
+    j++;
+    auto i = m.begin();
+    while (it != m.end())
+    {
+        if (i->first + k >= j->first || j->first + k >= it->first)
+            h += j->second;
+        i++;
+        j++;
+        it++;
+    }
+    if (i->first + k >= j->first)
+        h += j->second;
+    cout << h;
+    return 0;
+}
  
 Sherlock and John were investigating a murder and the murderer was Ms.Irene Adler. She wanted Sherlock to find her by solving the puzzles given by her and the tasks given by her. Sherlock was able to solve all but one. The last task was to write a program to remove the duplicate elements from an array. Can you help Sherlock?
 C lang
@@ -62,55 +66,40 @@ int main()
 }
  
 A Company 'XYZ' sells Mango Juice in packaged bottles in various sizes. The possible size of the bottles are {1, 5, 7 and 10} litres. The company wants to supply the demand volume of mango juice using as few bottles as possible regardless of size. Help the company in finding the minimum number of bottles needed to supply the demand volume of Mango Juice.
-C++ lang
-#include<bits/stdc++.h>
+## C++ lang
+#include <bits/stdc++.h>
 using namespace std;
- 
-// m is size of coins array (number of different coins)
 int minCans(int cans[], int m, int V)
 {
-            	// table[i] will be storing the minimum number of cans
-            	// required for i value. So table[V] will have result
-            	int table[V+1];
- 
-            	// Base case (If given value V is 0)
-            	table[0] = 0;
- 
-            	// Initialize all table values as Infinite
-            	for (int i=1; i<=V; i++)
-                            	table[i] = INT_MAX;
- 
-            	// Compute minimum cans required for all
-            	// values from 1 to V
-            	for (int i=1; i<=V; i++)
-            	{
-                            	// Go through all cans smaller than i
-                            	for (int j=0; j<m; j++)
-                            	if (cans[j] <= i)
-                            	{
-                                            	int sub_res = table[i-cans[j]];
-                                            	if (sub_res != INT_MAX && sub_res + 1 < table[i])
-                                                            	table[i] = sub_res + 1;
-                            	}
-            	}
-            	return table[V];
+    int table[V + 1];
+    table[0] = 0;
+    for (int i = 1; i <= V; i++)
+        table[i] = INT_MAX;
+    for (int i = 1; i <= V; i++)
+    {
+        for (int j = 0; j < m; j++)
+            if (cans[j] <= i)
+            {
+                int sub_res = table[i - cans[j]];
+                if (sub_res != INT_MAX && sub_res + 1 < table[i])
+                    table[i] = sub_res + 1;
+            }
+    }
+    return table[V];
 }
- 
-// Driver program to test above function
 int main()
 {
-            	int cans[] = {1,5,7,10};
-            	int m = sizeof(cans)/sizeof(cans[0]);
-            	int V,i,n;
-	cin>>n;
-  
-  
-            	for(i=0;i<n;i++)
-  	{
-        cin>>V;
-            		cout << minCans(cans, m, V)<<endl;
-  	}
-            	return 0;
+    int cans[] = {1, 5, 7, 10};
+    int m = sizeof(cans) / sizeof(cans[0]);
+    int V, i, n;
+    cin >> n;
+
+    for (i = 0; i < n; i++)
+    {
+        cin >> V;
+        cout << minCans(cans, m, V) << endl;
+    }
+    return 0;
 }
 ###################################Deepak##########################################
 In order to grab the throne, Jon Snow is given an array of integers and a target number , and is asked to find the very first and the last occurrences of the given target , write a program to help Jon Snow!
@@ -119,38 +108,39 @@ C lang
 #include <stdio.h>
 int main()
 {
-   // Try out your code here
-   int fi=-1;
-   int li=-1;
-            	int n,k,arr[20];
-            	scanf("%d",&n);
-            	for(int i=0;i<n;i++)
-            	{
-                            	scanf("%d",&arr[i]);
-            	}
-            	scanf("%d",&k);
-            	for(int i=0;i<n;i++)
-            	{
-                            	if(arr[i]==k)
-                            	{
-                                            	if(fi == -1)
-                                            	{
-                                                            	fi=i;
-                                                            	li=i;
-                                            	}
-                                            	else
-                                            	{
-                                                            	li=i;
-                                            	}
-                            	}
-            	}
-                                            	printf("[");
-            	    	printf("%d",fi);
-            	printf(",");
-            	printf("%d",li);
-            	printf("]");
-   return 0;
+    // Try out your code here
+    int fi = -1;
+    int li = -1;
+    int n, k, arr[20];
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    scanf("%d", &k);
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == k)
+        {
+            if (fi == -1)
+            {
+                fi = i;
+                li = i;
+            }
+            else
+            {
+                li = i;
+            }
+        }
+    }
+    printf("[");
+    printf("%d", fi);
+    printf(",");
+    printf("%d", li);
+    printf("]");
+    return 0;
 }
+
 Java 8 (Partially 33.33)
 import java.util.*;
 class Main{
@@ -192,17 +182,16 @@ int main()
 {
    // Try out your code here
    char a1[30];
-            	char a2[20];
-            	   gets(a1);
-            	gets(a2);
-            	printf("true");
+   char a2[20];
+    gets(a1);
+    gets(a2);
+    printf("true");
    return 0;
 }
 C lang (partially 100)
 #include <stdio.h>
 int main()
 {
-   // Try out your code here
    printf("true");
    return 0;
 }
@@ -214,37 +203,34 @@ Jim promised dwight that he will be sending two strings s1 and s2. But Jim is a 
 #include <stdlib.h>
 int main()
 {
-   // Try out your code here
-   char a1[20];
-            	char a2[20];
-            	int i=0,j=0,l,f=0;
-            	gets(a1);
-            	gets(a2);
-            	l=strlen(a2);
-            	while(a1[i]!='\0')
-                            	  {
-                                            	  if(a1[i]==a2[j])
-                                                            	 {
-                                                                            	 if(j==l-1)
-                                                                            	 {
-                                                                                            	 printf("%d",(i-l)+1);
-                                                                                            	 f=1;
-                                                                                            	 exit(0);
-                                            	                                            	 
-                                                                            	 }
-                                                                            	 else
-                                                                            	 j++;
-                                                            	 }
-                                                            	 else
-                                                            	 j=0;
-                                                            	 i++;
-                                                            	 
-                                                            	 
-                                                            	 }
-                            	
-                                                            	 if(f==0)
-                                                            	 printf("%d",-1);
-                                                            	 return 0;
+    // Try out your code here
+    char a1[20];
+    char a2[20];
+    int i = 0, j = 0, l, f = 0;
+    gets(a1);
+    gets(a2);
+    l = strlen(a2);
+    while (a1[i] != '\0')
+    {
+        if (a1[i] == a2[j])
+        {
+            if (j == l - 1)
+            {
+                printf("%d", (i - l) + 1);
+                f = 1;
+                exit(0);
+            }
+            else
+                j++;
+        }
+        else
+            j = 0;
+        i++;
+    }
+
+    if (f == 0)
+        printf("%d", -1);
+    return 0;
 }
 Given an integer N, calculate the remainder when the number of Bitonic arrangements, that can be obtained by rearranging the numbers 1, 2, ...., N, is divided by 10^9 + 7 where ^ is power.
  
@@ -284,105 +270,114 @@ Some boxes are placed in a row and each box can contain maximum one toy. Some of
  
 Given an integer array of boxes containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return if n new toys can be placed in the row of box without violating the no-adjacent-toys rule and the position of the boxes shouldn't be disturbed.
  
+## C++ original
 #include <bits/stdc++.h>
 using namespace std;
- 
- bool canPlaceToys(vector<int>& arr, int n) {
-    	int size=arr.size();
-    	int count=0;
-    	
-        if(size==1){
-        	
-            if(arr[0]+n<=1){
-                return true;
-        	}
-        	else{
-                return false;
-        	}
-    	}
-    	
-    	for(int i=0;i<size;i++){
-        	
-     	
-            if(arr[i])continue;
-        	
-            if(i==0  && arr[i+1]==0){
-                arr[i]=1;
+bool canPlaceToys(vector<int> &arr, int n)
+{
+    int size = arr.size();
+    int count = 0;
+
+    if (size == 1)
+    {
+
+        if (arr[0] + n <= 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+
+        if (arr[i])
+            continue;
+
+        if (i == 0 && arr[i + 1] == 0)
+        {
+            arr[i] = 1;
+            count++;
+        }
+
+        else if (i == size - 1 && arr[i - 1] == 0)
+        {
+            arr[i] = 1;
+            count++;
+        }
+
+        else
+        {
+            if (i == 0 || i == size - 1)
+                continue;
+
+            if (arr[i - 1] == 0 && arr[i + 1] == 0)
+            {
                 count++;
-        	}
-        	
-       	else if(i==size-1 && arr[i-1]==0){
-                arr[i]=1;
-                count++;
-        	}
-        	
-        	else{
-                if(i==0 || i==size-1)continue;
-            	
-            	
-                    if(arr[i-1]==0 && arr[i+1]==0){
-                        count++;
-                        arr[i]=1;
-                    }
-            	
-        	}
-    	}
-    	if(count >=n)return true;
-    	return false;
-    	
-	}
+                arr[i] = 1;
+            }
+        }
+    }
+    if (count >= n)
+        return true;
+    return false;
+}
 int main()
 {
-            	vector<int> s;
-            	int n,m;
- 
-            	cin>>n;
-            	for(int i=0;i<n;i++){
-            		int t;
-            		cin>>t;
-            		s.push_back(t);
-            	}
-cin>>m;
-            	if(canPlaceToys(s,m))
-            	
-cout<<"true"<<" ";
-else cout<<"false";
-            	return 0;
+    vector<int> s;
+    int n, m;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int t;
+        cin >> t;
+        s.push_back(t);
+    }
+    cin >> m;
+    if (canPlaceToys(s, m))
+        cout << "true"<< " ";
+    else
+        cout << "false";
+    return 0;
 }
  
 Write a program to implement a Selection Sort algorithm for sorting the elements of an array. (custom )
+## C++
 #include <iostream>
 #include <bits/stdc++.h>
- 
 using namespace std;
 void solve()
 {
-            	int n,e;
-            	cin>>n;
-            	vector<int> a;
-            	for(int i=0;i<n;i++)
-            	{
-                            	cin>>e;
-                            	a.push_back(e);
-            	}
-            	sort(a.begin(),a.end());
-            	for(auto ele:a)
-            	{
-                            	cout<<ele<<" ";
-            	}
-            	cout<<endl;
+    int n, e;
+    cin >> n;
+    vector<int> a;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> e;
+        a.push_back(e);
+    }
+    sort(a.begin(), a.end());
+    for (auto ele : a)
+    {
+        cout << ele << " ";
+    }
+    cout << endl;
 }
- 
+
 int main()
 {
-   // Try out your code here
-	int t;
-            	cin>>t;
-            	while(t--){
-                            	solve();
-            	}
-            	return 0;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    return 0;
 }
+	
 ############################Deepak latest test################################
 A group of people went to a tourist spot. Before entering the place they submitted all their belongings to the management and as an acknowledgement of the same, the management issued a token to each group. Before processing the token number the management collects the details of ages of all the persons in the group as integers. Based on the collected data, the management issues the token number which will be the age of the second oldest person(s). If the group doesn't have a second oldest person then the token number is issued as the age of the oldest person. Write a program to ease this process for the management personnel.
 
@@ -401,87 +396,90 @@ else:
 C++ (Original from Akash)
 #include <bits/stdc++.h>
 using namespace std;
-
-void insert(vector<int> &v, int a){
-        for(int i = 0;i<2;i++){
-            if(i>=v.size()){
-                v.push_back(a);
-                break;
-            }else if(v[i]==a){
-                break;
-            }else if(v[i]<a){
-                int t = v[i];
-                v[i] = a;
-                a = t;
-            }
-        }
-}
-   int secMax(vector<int>& nums) {
-        vector<int> v;
-        for(int i = 0;i<nums.size();i++){
-           insert(v,nums[i]);
-        }
-       
-        if(v.size()<2){
-            return v[0];
-        }else{
-            return v[1];
-        }
-        
-    }
-    
-    
-int main() 
+void insert(vector<int> &v, int a)
 {
-  int n;
-  cin>>n;
-  vector<int>v;
-  for(int i=0;i<n;i++){
-    int t;
-    cin>>t;
-   v.push_back(t);}
-  cout<<secMax(v);
+    for (int i = 0; i < 2; i++)
+    {
+        if (i >= v.size())
+        {
+            v.push_back(a);
+            break;
+        }
+        else if (v[i] == a)
+        {
+            break;
+        }
+        else if (v[i] < a)
+        {
+            int t = v[i];
+            v[i] = a;
+            a = t;
+        }
+    }
+}
+int secMax(vector<int> &nums)
+{
+    vector<int> v;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        insert(v, nums[i]);
+    }
+    if (v.size() < 2)
+    {
+        return v[0];
+    }
+    else
+    {
+        return v[1];
+    }
+}
+int main()
+{
+    int n;
+    cin >> n;
+    vector<int> v;
+    for (int i = 0; i < n; i++)
+    {
+        int t;
+        cin >> t;
+        v.push_back(t);
+    }
+    cout << secMax(v);
     return 0;
 }
 ### For the given array of n integers , find the highest even pairs.
 (Note 1: even pair is , when adding two numbers the sum should be even.
  2: return -1 , when there is no such pair)
 
-
-JAVA 8
+## JAVA 8
 import java.io.*;
 import java.util.*;
-public class Main
-{
-  public static void main(String args[])
-  {
-    //Try out your code here
-    Scanner sc=new Scanner(System.in);
-	int i,c=0;
-	int m=0;
-	int n=sc.nextInt();
-	int[] arr = new int[n];
-	for(i=0;i<n;i++){
-		arr[i]=sc.nextInt();
-  }
-	  for(i=0;i<n-1;i++){
-		  for(int j=i+1;j<n;j++){
-			  if((arr[i]+arr[j])%2==0){
-				  if(m<(arr[i]+arr[j])){
-					  m=arr[i]+arr[j];
-					  c=1;
-				  }
-			  }
-		  }
-	  }
-	  if(c==1){
-		  System.out.println(m);
-	  }
-	  else{
-		  System.out.println(-1);
-	  }
-		  
-}
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int i, c = 0;
+        int m = 0;
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        for (i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if ((arr[i] + arr[j]) % 2 == 0) {
+                    if (m < (arr[i] + arr[j])) {
+                        m = arr[i] + arr[j];
+                        c = 1;
+                    }
+                }
+            }
+        }
+        if (c == 1) {
+            System.out.println(m);
+        } else {
+            System.out.println(-1);
+        }
+    }
 }
 For the given string, check whether it is a pangram or not.
 Note: Never use any inbuilt methods for lowercase or uppercase conversions
@@ -510,30 +508,33 @@ print(isPangram(s))
 #C++ custom
 #include <bits/stdc++.h>
 using namespace std;
-bool isPangram(string& s)
+bool isPangram(string &s)
 {
-	vector<bool> mark(26, false);
-	int index;
-	for (int i = 0; i < s.length(); i++) {
-		if ('A' <= s[i] && s[i] <= 'Z')
-			index = s[i] - 'A';
-		else if ('a' <= s[i] && s[i] <= 'z')
-			index = s[i] - 'a';
-		else
-			continue;
-		mark[index] = true;
-	}
-	for (int i = 0; i <= 25; i++)
-		if (mark[i] == false)
-			{ return (false); }
-	return (true);
+    vector<bool> mark(26, false);
+    int index;
+    for (int i = 0; i < s.length(); i++)
+    {
+        if ('A' <= s[i] && s[i] <= 'Z')
+            index = s[i] - 'A';
+        else if ('a' <= s[i] && s[i] <= 'z')
+            index = s[i] - 'a';
+        else
+            continue;
+        mark[index] = true;
+    }
+    for (int i = 0; i <= 25; i++)
+        if (mark[i] == false)
+        {
+            return (false);
+        }
+    return (true);
 }
 int main()
 {
-	string s;
+    string s;
     getline(cin, s);
-	cout<<(isPangram(s) ? "true":"false")<<endl;
-	return (0);
+    cout << (isPangram(s) ? "true" : "false") << endl;
+    return (0);
 }
 
 
@@ -563,17 +564,12 @@ print(maxcost(n,c))
 		
 #include<iostream>
 using namespace std;
- 
 // A utility function that returns maximum of two integers
 int max(int a, int b) { return (a > b)? a : b; }
- 
-// Returns the maximum value that can be put in a knapsack of capacity W
 int knapSack(int W, int wt[], int val[], int n)
 {
    int i, w;
    int K[n+1][W+1];
- 
-   // Build table K[][] in bottom up manner
    for (i = 0; i <= n; i++)
    {
        for (w = 0; w <= W; w++)
@@ -586,28 +582,25 @@ int knapSack(int W, int wt[], int val[], int n)
                  K[i][w] = K[i-1][w];
        }
    }
- 
    return K[n][W];
 }
- 
 int main()
 {
-	int i;
+    int i;
     int val[100];
     int wt[100];
     int  W = 50;
     int n;
-	cin>>n;
-	for(i=0; i<n;i++)
-		cin>>val[i];
-	for(i=0; i<n;i++)
-		cin>>wt[i];
-	cin>>W;
-    cout<<knapSack(W, val, wt, n);
-    return 0;
+    cin>>n;
+    for(i=0; i<n;i++)
+	cin>>val[i];
+     for(i=0; i<n;i++)
+	cin>>wt[i];
+     cin>>W;
+     cout<<knapSack(W, val, wt, n);
+     return 0;
 }
  
-
  #################srihari#########################################
 Autobot's and Decepticon's have a huge battle going on and every time Optimus Prime wants to use his missile he is supposed to memorize the primes between certain limits. Write a code to help Optimus to help memorize the same. Use the function Primes(n1,n2) to do so.
 #include <stdio.h>
@@ -690,7 +683,7 @@ for i in range(t):
 You are given the cost of changing M pairs of lowercase characters x to y. You are also given a string S.
 You can change a character in string S to another lowercase character by spending the cost you were given earlier. Determine the minimum cost that is required to make S a palindrome.
 You can assume that it is always possible to make S a palindrome.
- 
+## C++ original
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
