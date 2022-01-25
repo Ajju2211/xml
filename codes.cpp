@@ -494,6 +494,49 @@ if len(s)==26:
 	print("true")
 else:
 	print("false")
+		
+#Python 3.9 custom
+import string, sys
+def isPangram(s, alphabet=string.ascii_lowercase):
+    alphaset = set(alphabet)
+    s=s.replace(' ','')
+    if alphaset <= set(s.lower()):
+        return "true"
+    else:
+        return "false"
+s=input()
+print(isPangram(s))
+		
+#C++ custom
+#include <bits/stdc++.h>
+using namespace std;
+bool isPangram(string& s)
+{
+	vector<bool> mark(26, false);
+	int index;
+	for (int i = 0; i < s.length(); i++) {
+		if ('A' <= s[i] && s[i] <= 'Z')
+			index = s[i] - 'A';
+		else if ('a' <= s[i] && s[i] <= 'z')
+			index = s[i] - 'a';
+		else
+			continue;
+		mark[index] = true;
+	}
+	for (int i = 0; i <= 25; i++)
+		if (mark[i] == false)
+			{ return (false); }
+	return (true);
+}
+int main()
+{
+	string s;
+    getline(cin, s);
+	cout<<(isPangram(s) ? "true":"false")<<endl;
+	return (0);
+}
+
+
 You are going to a sweet shop to have sweets as you are low on energy. The sweets are selling out. There is only a kilogram of each N types of sweets remaining, each having a specific cost and energy. You have a total of C amount of money with you. Your task is to calculate the maximum total energy that you can gain by purchasing the sweets optimally and savoring them. In particular, note that you cannot buy a portion weighing K of the provided sweet. Each Type of Sweet contains a provided energy parameter e and eating this sweet can increase your total energy by e x K.
  
 def maxcost(n,c):
