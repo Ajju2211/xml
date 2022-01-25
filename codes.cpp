@@ -1559,7 +1559,57 @@ int main()
     return 0;
 }
  
+################################## Chandu Latest##############################################
+Raj organizes a party on his birthday and he invites his N friends to the party. Raj planned a game to entertain his friends. The Raj Plan is as follows:
 
+All the N friends need to dance in a circular formation and they need to change positions after every 1 second constantly. The change of position is not random & there is a certain pattern.
+
+Consider N = 6, and an array friends[] = {3,6,5,4,1,2}. This array (1-indexed) is the dancing pattern. The value at friends[i], indicates the new of position of the friend who is standing at the ith position.
+
+Given N & the array friends[ ], find the time after which all the friends are in the initial positions for the 1st time.
+# C++ original
+#include<iostream>
+using namespace std;
+
+long long int gcd(long long int a,long long int b)
+{
+  if(b==0)
+    return a;
+  else
+    return gcd(b,a%b);
+}
+int main()
+{
+  long long int t,n,i,res,c,temp,temp1;
+  scanf("%lld",&t);
+  while(t--)
+  {
+      cin>>n;
+    long long int a[n];
+    for(i=0;i<n;i++)
+        cin>>a[i];
+    i=0;
+    res=1;
+    c=0;
+    while(i<=n-1)
+    {
+      temp1=i;
+      c=0;
+      while(a[i]!=0)
+      {
+        temp=i;//4
+        i=a[i]-1;//0
+        a[temp]=0;//0
+        c+=1;//3
+      }
+      i=temp1+1;
+      if(c!=0)
+        res=res*c/gcd(res,c);
+    }
+    cout<<res<<endl;
+  }
+  return 0;
+}
 
  
 
