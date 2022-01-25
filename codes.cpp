@@ -757,9 +757,9 @@ int main()
 
 ###########3#####previous exam################################
 Jim promised dwight that he will be sending two strings s1 and s2. But Jim is a regular prankster, hence dwight has a doubt whether s2 is a substring of s1 or not. Write a program to check if S2 is a substring of S1, If present return the starting index of it else return -1.
+##c++ original (4/5 passed)	
 #include <bits/stdc++.h>
 using namespace std;
-
 int main() 
 {
 	string s1,s2;
@@ -770,7 +770,25 @@ int main()
 	cout<<pos<<endl;
     return 0;
 }
-
+##c++ custom
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{                  
+    string s1,s2;
+    cin>>s1>>s2;
+    s1=s1.substr(1,s1.size()-2);
+    s2=s2.substr(1,s2.size()-2);
+    int pos = s1.find(s2);
+    int found = s1.find_last_of(s2);
+    if (found != -1){
+        cout<<(found-s2.size()+1)<<endl;    
+    }
+    else{
+        cout<<-1<<endl;    
+    }
+    return 0;
+}
 
 A preschool kid is severely bored in the evening as a long rainy day has taken away his play time fun. To keep the kid engaged, his father comes up with a brand new game for which the kid has been given a basket of pebbles of different colours. Each colour is coded as a unique integer. The father then gives the kid a set of K pebbles which is not less than 2. If the given set of pebbles can be divided into a number of groups with equal number of pebbles of same colour, then the kid should raise his right hand. Else the kid should raise his left hand. Now the father is in need of assistance to evaluate the answers. Write a code to return TRUE or FALSE if the kid is required to raise his right or left hand respectively.
 
