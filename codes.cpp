@@ -726,71 +726,37 @@ int main(){
     cout << ans << '\n';
 }
 Remove all the duplicates in the given n(number of elements) unsorted array and shift the empty spaces to the end of the array and fill with 0.
+## C++ custom
 #include <bits/stdc++.h>
 using namespace std;
-
 void removeDups(vector<int> arr, int n)
 {
-	unordered_map<int, bool> mp;
-	int c=0;
-	for (int i = 0; i < n; ++i) {
-		if (mp.find(arr[i]) == mp.end()) {
-			cout << arr[i] << " ";
-			c++;
-		}
-		mp[arr[i]] = true;
-	}
-	for(int i=0;i<(n-c);i++){
-	    cout<<0<<" ";
-	}
-	cout<<endl;
+    unordered_map<int, bool> mp;
+    int c=0;
+    for (int i = 0; i < n; ++i) {
+    	if (mp.find(arr[i]) == mp.end()) {
+    	    cout << arr[i] << " ";
+    		c++;
+    	}
+    	mp[arr[i]] = true;
+    }
+    for(int i=0;i<(n-c);i++){
+        cout<<0<<" ";
+    }
+    cout<<endl;
 }
-
 int main()
 {
     int n,e;
-	cin>>n;
-	vector<int> a;
-	for(int i=0;i<n;i++){
-		cin>>e;
-		a.push_back(e);
-	}
-	removeDups(a, n);
-	return 0;
+    cin>>n;
+    vector<int> a;
+    for(int i=0;i<n;i++){
+    	cin>>e;
+    	a.push_back(e);
+    }
+    removeDups(a, n);
+    return 0;
 }
-#include <bits/stdc++.h>
-using namespace std;
-
-void removeDups(vector<int> arr, int n)
-{
-	unordered_map<int, bool> mp;
-	int c=0;
-	for (int i = 0; i < n; ++i) {
-		if (mp.find(arr[i]) == mp.end()) {
-			cout << arr[i] << " ";
-			c++;
-		}
-		mp[arr[i]] = true;
-	}
-	for(int i=0;i<(n-c);i++){
-	    cout<<0<<" ";
-	}
-	cout<<endl;
-}
-
-int main()
-{
-    int n,e;
-	cin>>n;
-	vector<int> a;
-	for(int i=0;i<n;i++){
-		cin>>e;
-		a.push_back(e);
-	}
-	removeDups(a, n);
-	return 0;
-}
-
 
 
  
@@ -1612,5 +1578,40 @@ int main()
 }
 
  
+Detective Jake and Amy are cracking down a puzzle in order to solve a case. After hours of solving, each of them have got two individually sorted array, and inorder to crack the case, they will have to merge the two arrays and return as one sorted array 
+Write a program to help them in crackiing the case!.
+## C++ Custom
+#include<bits/stdc++.h>
+using namespace std;
+void merge(vector<int> &a, vector<int> &b, long long n, long long m)
+{
+	map<int, bool> mp;
+	long long i;
+	for(i = 0; i < n; i++)
+	mp[a[i]] = true;
+	for(i = 0;i < m;i++)
+	mp[b[i]] = true;
+	for(auto i: mp)
+	cout<< i.first <<" ";
+}
+void read(vector<int> &a,long long n){
+    int e;
+    for(long long i=0;i<n;i++){
+        cin>>e;
+        a.push_back(e);
+    }
+}
+int main()
+{
+    long long n,m,i;
+    int e;
+    vector<int> a,b;
+    cin>>n;
+    read(a, n);
+    cin>>m;
+    read(b, m);
+    merge(a, b, n, m);
+    return 0;
+}
 
 
