@@ -538,7 +538,7 @@ int main()
 
 
 You are going to a sweet shop to have sweets as you are low on energy. The sweets are selling out. There is only a kilogram of each N types of sweets remaining, each having a specific cost and energy. You have a total of C amount of money with you. Your task is to calculate the maximum total energy that you can gain by purchasing the sweets optimally and savoring them. In particular, note that you cannot buy a portion weighing K of the provided sweet. Each Type of Sweet contains a provided energy parameter e and eating this sweet can increase your total energy by e x K.
- 
+#python correct 100 
 def maxcost(n,c):
 	if(c<=0):
 		return 0
@@ -558,6 +558,55 @@ for i in range(n):
 	energy.append(x)
 c=int(input())
 print(maxcost(n,c))
+		
+## c++ original
+		
+#include<iostream>
+using namespace std;
+ 
+// A utility function that returns maximum of two integers
+int max(int a, int b) { return (a > b)? a : b; }
+ 
+// Returns the maximum value that can be put in a knapsack of capacity W
+int knapSack(int W, int wt[], int val[], int n)
+{
+   int i, w;
+   int K[n+1][W+1];
+ 
+   // Build table K[][] in bottom up manner
+   for (i = 0; i <= n; i++)
+   {
+       for (w = 0; w <= W; w++)
+       {
+           if (i==0 || w==0)
+               K[i][w] = 0;
+           else if (wt[i-1] <= w)
+                 K[i][w] = max(val[i-1] + K[i-1][w-wt[i-1]],  K[i-1][w]);
+           else
+                 K[i][w] = K[i-1][w];
+       }
+   }
+ 
+   return K[n][W];
+}
+ 
+int main()
+{
+	int i;
+    int val[100];
+    int wt[100];
+    int  W = 50;
+    int n;
+	cin>>n;
+	for(i=0; i<n;i++)
+		cin>>val[i];
+	for(i=0; i<n;i++)
+		cin>>wt[i];
+	cin>>W;
+    cout<<knapSack(W, val, wt, n);
+    return 0;
+}
+ 
 
  #################srihari#########################################
 Autobot's and Decepticon's have a huge battle going on and every time Optimus Prime wants to use his missile he is supposed to memorize the primes between certain limits. Write a code to help Optimus to help memorize the same. Use the function Primes(n1,n2) to do so.
