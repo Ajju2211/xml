@@ -652,16 +652,16 @@ if flag==0:
 	print(-1)
 			
 Sita has a love for Dairy milk. She has bought a huge Dairy milk chocolate bar which contains N squares arranged in a row. Each of the squares has a tastiness level which is denoted by an array A[]. Sita can eat the first or the last square of the chocolate bar at once. Sita has a sister who too loves chocolates and she demands the final chocolate square that is left over. Now, Sita, being greedy, eats all the tastier squares possible. Determine the tastiness level of the square which her sister gets.
- Python (100)
+ #Python (100) correct best solution
 t=int(input())
 for i in range(0,t):
 	n=int(input())
 	taste=list(map(int,input().split()))
 	while len(taste)!=1:
 		if taste[0]>taste[-1]:
-			   taste.remove(taste[0])
+			taste.remove(taste[0])
 		else:
-			   taste.remove(taste[-1])
+			taste.remove(taste[-1])
 	print(taste[0])
  # Python (Original)	 
 t=int(input())
@@ -678,7 +678,40 @@ for i in range(t):
 	n=int(input())
 	l=list(map(int,input().split()))
 	print(min(l))
- 
+#c++ (original)
+#include<bits/stdc++.h>
+using namespace std;
+int find_last_bite(int arr[],int n,int left,int right)
+{
+    while(left!=right)
+    {
+        if(arr[left]>=arr[right])
+        left++;
+        else
+        {
+            right--;
+        }
+    }
+    return arr[left];
+}
+int main()
+ {
+	int T;
+	cin>>T;
+	while(T--)
+	{
+	    int N;
+	    cin>>N;
+	    int arr[N];
+	    for(int i=0;i<N;i++)
+	    {
+	       cin>>arr[i];
+	    }
+	    int result=find_last_bite(arr,N,0,N-1);
+	    cout<<result<<"\n";
+	}
+	return 0;
+}
 #######################Azhar##########################################
 You are given the cost of changing M pairs of lowercase characters x to y. You are also given a string S.
 You can change a character in string S to another lowercase character by spending the cost you were given earlier. Determine the minimum cost that is required to make S a palindrome.
