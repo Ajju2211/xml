@@ -603,41 +603,59 @@ int main()
  
  #################srihari#########################################
 Autobot's and Decepticon's have a huge battle going on and every time Optimus Prime wants to use his missile he is supposed to memorize the primes between certain limits. Write a code to help Optimus to help memorize the same. Use the function Primes(n1,n2) to do so.
+## C Correct written code	
 #include <stdio.h>
-int main()
-{
-   int low,high,i,flag;
-	scanf("%d %d",&low,&high);
-	low=low+1;
-	while(low<high)
-	{
-		flag=0;
-		if(low<=1)
-		{
-			++low;
-			continue;
-		}
-		for(int i=2;i<=low/2;i++)
-		{
-			if(low%i==0)
-			{
-				flag=1;
-				break;
-			}
-		}
-		if(flag==0)
-		{
-			printf("%d ",low);
-		}
-		++low;
-	}
-   
-   return 0;
+int main() {
+  int low, high, i, flag;
+  scanf("%d %d", & low, & high);
+  low = low + 1;
+  while (low < high) {
+    flag = 0;
+    if (low <= 1) {
+      ++low;
+      continue;
+    }
+    for (int i = 2; i <= low / 2; i++) {
+      if (low % i == 0) {
+        flag = 1;
+        break;
+      }
+    }
+    if (flag == 0) {
+      printf("%d ", low);
+    }
+    ++low;
+  }
+  return 0;
 }
- 
+## C++ Original 
+#include <iostream>
+using namespace std;
+void Primes(int n1, int n2) {
+  for (int i = n1 + 1; i < n2; ++i) {
+    bool flag = true;
+    for (int j = 2; j * j <= i; ++j) {
+      if (i % j == 0) {
+        flag = false;
+
+        break;
+      }
+    }
+    if (flag == true)
+      cout << i << " ";
+  }
+}
+int main() {
+  int n1, n2;
+  bool flag;
+  cin >> n1 >> n2;
+  Primes(n1, n2);
+  return 0;
+}
+
 Given an integer n and array of n integers and an integer target, find the indices of two numbers which when they sum up gives the target
 Return -1 when the solution is not available
- 
+## Python 
 n=int(input())
 arr=list(map(int,input().split()))
 k=int(input())
