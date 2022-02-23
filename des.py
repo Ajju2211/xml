@@ -1,5 +1,5 @@
 from secrets import token_bytes
-
+from Crypto.Cipher import DES
 key = token_bytes(8)
 
 def encrypt(msg):
